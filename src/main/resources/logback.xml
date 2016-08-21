@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{dd MMM yyyy HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} %L : %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <timestamp key="byDay" datePattern="yyyyMMdd'T'HHmmss" />
+
+    <appender name="FILE"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.home}/logs/log-${byDay}.txt </file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${user.home}/logs/logFile.%d{yyyy-MM-dd}.%i.txt
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>50MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%date{dd MMM yyyy HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} %L : %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework" level="ERROR" />
+    <logger name="net.ljcomputing.sr" level="DEBUG" />
+
+    <root>
+        <level value="DEBUG" />
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
