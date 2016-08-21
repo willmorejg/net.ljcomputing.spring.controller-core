@@ -3,6 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.0.RELEASE</version>
+	</parent>
+
 	<groupId>net.ljcomputing.spring</groupId>
 	<artifactId>controller-core</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
@@ -23,8 +29,8 @@ Spring Controller core components.
 
 		<github.username>willmorejg</github.username>
 
-        <net.ljcomputing.logging.version>1.0.1-SNAPSHOT</net.ljcomputing.logging.version>
-        <net.ljcomputing.gson.version>1.1.1-SNAPSHOT</net.ljcomputing.gson.version>
+		<net.ljcomputing.logging.version>logging-1.0.1</net.ljcomputing.logging.version>
+		<net.ljcomputing.gson.version>gson-1.1.1</net.ljcomputing.gson.version>
 	</properties>
 
 	<!-- Contact and License Information -->
@@ -65,31 +71,41 @@ Spring Controller core components.
 		</snapshotRepository>
 
 	</distributionManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+	<repositories>
 
-        <dependency>
-            <groupId>net.ljcomputing</groupId>
-            <artifactId>gson</artifactId>
-            <version>${net.ljcomputing.gson.version}</version>
-        </dependency>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
 
-        <dependency>
-            <groupId>net.ljcomputing</groupId>
-            <artifactId>logging</artifactId>
-            <version>${net.ljcomputing.logging.version}</version>
-        </dependency>
+	</repositories>
 
-    </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.willmorejg</groupId>
+			<artifactId>net.ljcomputing.gson</artifactId>
+			<version>${net.ljcomputing.gson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.willmorejg</groupId>
+			<artifactId>net.ljcomputing.logging</artifactId>
+			<version>${net.ljcomputing.logging.version}</version>
+		</dependency>
+
+	</dependencies>
 
 	<build>
 
@@ -215,9 +231,4 @@ Spring Controller core components.
 
 	</build>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.0.RELEASE</version>
-	</parent>
 </project>
